@@ -5,26 +5,27 @@ int i = 0;      //init running var
 int pump1 = 7;  //pump1 digital pin
 int pump2 = 8;  //pump2 digital pin
 int pump3 = 9;  //pump3 digital pin
+int dellay = 750;
 String drinkdone;
 bool showPump = true;
-String version = "v0.5";
+String version = "v0.7";
 
 ///////////////////
 // BEGIN RECIPES //
 ///////////////////
 
-String drink1 = "Mai Tai";  //max 9 chars
-int drink1p1 = 2;
-int drink1p2 = 2;
-int drink1p3 = 2;
-String drink2 = "Mojito";  //max 9 chars
-int drink2p1 = 2;
-int drink2p2 = 2;
-int drink2p3 = 2;
-String drink3 = "Gin Tonic";  //max 9 chars
-int drink3p1 = 2;
-int drink3p2 = 2;
-int drink3p3 = 2;
+String drink1 = "Red Bull";  //max 9 chars
+int drink1p1 = 8;
+int drink1p2 = 8;
+int drink1p3 = 0;
+String drink2 = "Manpower";  //max 9 chars
+int drink2p1 = 0;
+int drink2p2 = 8;
+int drink2p3 = 8;
+String drink3 = "Lavendar";  //max 9 chars
+int drink3p1 = 8;
+int drink3p2 = 0;
+int drink3p3 = 8;
 
 ///////////////////
 //  END RECIPES  //
@@ -58,7 +59,19 @@ void loop() {
     {
       if (i == 0)
       {
-        digitalWrite(pump1, HIGH);
+        if (drink1p1 != 0)
+        {
+          digitalWrite(pump1, HIGH);
+        } else if (drink1p2 != 0)
+        {
+          digitalWrite(pump2, HIGH);
+        } else if (drink1p3 != 0)
+        {
+          digitalWrite(pump3, HIGH);
+        } else
+        {
+          done("ERROR");
+        }
         if (showPump == true)
         {
           lcd.setCursor(15, 1);
@@ -67,7 +80,7 @@ void loop() {
       } 
       lcd.setCursor(i, 1);
       lcd.write(byte(0));
-      delay(500);
+      delay(dellay);
       i++;
       if (i == drink1p1)
       {
@@ -109,7 +122,19 @@ void loop() {
     {
       if (i == 0)
       {
-        digitalWrite(pump1, HIGH);
+        if (drink2p1 != 0)
+        {
+          digitalWrite(pump1, HIGH);
+        } else if (drink2p2 != 0)
+        {
+          digitalWrite(pump2, HIGH);
+        } else if (drink2p3 != 0)
+        {
+          digitalWrite(pump3, HIGH);
+        } else
+        {
+          done("ERROR");
+        }
         if (showPump == true)
         {
           lcd.setCursor(15, 1);
@@ -118,7 +143,7 @@ void loop() {
       } 
       lcd.setCursor(i, 1);
       lcd.write(byte(0));
-      delay(500);
+      delay(dellay);
       i++;
       if (i == drink2p1)
       {
@@ -160,7 +185,19 @@ void loop() {
     {
       if (i == 0)
       {
-        digitalWrite(pump1, HIGH);
+        if (drink3p1 != 0)
+        {
+          digitalWrite(pump1, HIGH);
+        } else if (drink3p2 != 0)
+        {
+          digitalWrite(pump2, HIGH);
+        } else if (drink3p3 != 0)
+        {
+          digitalWrite(pump3, HIGH);
+        } else
+        {
+          done("ERROR");
+        }
         if (showPump == true)
         {
           lcd.setCursor(15, 1);
@@ -169,7 +206,7 @@ void loop() {
       } 
       lcd.setCursor(i, 1);
       lcd.write(byte(0));
-      delay(500);
+      delay(dellay);
       i++;
       if (i == drink3p1)
       {
@@ -220,4 +257,3 @@ void kill(){
   digitalWrite(pump2, LOW);
   digitalWrite(pump3, LOW);
 }
-

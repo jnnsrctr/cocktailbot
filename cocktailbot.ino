@@ -5,24 +5,24 @@ int i = 0;      //init running var
 int pump1 = 7;  //pump1 digital pin
 int pump2 = 8;  //pump2 digital pin
 int pump3 = 9;  //pump3 digital pin
-int dellay = 750;
+int dellay = 950;
 String drinkdone;
-bool showPump = true;
-String version = "v0.7";
+bool showPump = false;
+String version = "v1.1";
 
 ///////////////////
 // BEGIN RECIPES //
 ///////////////////
 
-String drink1 = "Red Bull";  //max 9 chars
+String drink1 = "Bier";  //max 9 chars
 int drink1p1 = 8;
 int drink1p2 = 8;
 int drink1p3 = 0;
-String drink2 = "Manpower";  //max 9 chars
+String drink2 = "Hulk";  //max 9 chars
 int drink2p1 = 0;
 int drink2p2 = 8;
 int drink2p3 = 8;
-String drink3 = "Lavendar";  //max 9 chars
+String drink3 = "Zombie";  //max 9 chars
 int drink3p1 = 8;
 int drink3p2 = 0;
 int drink3p3 = 8;
@@ -256,4 +256,5 @@ void kill(){
   digitalWrite(pump1, LOW);
   digitalWrite(pump2, LOW);
   digitalWrite(pump3, LOW);
+  delay(1000);//TODO
 }
